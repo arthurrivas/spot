@@ -41,7 +41,7 @@ public class LocationResource {
 	@PostMapping
 	public ResponseEntity<?> createLocation(@RequestBody LocationNAddressDTO locAddDTO){
 		try {
-			Location location = locationService.fromLocationNAddressDTO(locAddDTO);
+			Location location = locationService.fromLocationNAddressDTO(locAddDTO, null);
 			Address address = addressService.fromLocationNAddressDTO(locAddDTO);
 			
 			location.setAddress(address);

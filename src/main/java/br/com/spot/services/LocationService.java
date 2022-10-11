@@ -3,6 +3,7 @@ package br.com.spot.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.spot.domains.Admin;
 import br.com.spot.domains.Location;
 import br.com.spot.domains.dtos.LocationNAddressDTO;
 import br.com.spot.repository.LocationRepository;
@@ -33,8 +34,8 @@ public class LocationService {
 	}
 	
 	
-	public Location fromLocationNAddressDTO(LocationNAddressDTO locAddDTO) {
-		return new Location(null, locAddDTO.getTitleLocation(),locAddDTO.getDescriptionLocation());
+	public Location fromLocationNAddressDTO(LocationNAddressDTO locAddDTO, Admin admin) {
+		return new Location(null, locAddDTO.getTitleLocation(),locAddDTO.getDescriptionLocation(), admin);
 	}
 
 

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,13 +23,18 @@ public class Location {
     @JoinColumn(name = "address_id")
     private Address address;
 	
+	@ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+	
 	public Location(){
 	}
 	
-	public Location(Integer id, String title, String description) {
+	public Location(Integer id, String title, String description, Admin admin) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.admin = admin;
 	}
 
 	public Integer getId() {
@@ -55,12 +61,19 @@ public class Location {
 		this.description = description;
 	}
 	
-
 	public Address getAddress() {
 		return address;
 	}
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 }
