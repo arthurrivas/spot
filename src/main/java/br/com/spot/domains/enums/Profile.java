@@ -2,7 +2,7 @@ package br.com.spot.domains.enums;
 
 public enum Profile {
 
-	ADMIN(1, "ROLE_ADMIM"), 
+	ADMIN(1, "ROLE_ADMIN"), 
 	CLIENT(2, "ROLE_CLIENT");
 
 	private Integer codProfile;
