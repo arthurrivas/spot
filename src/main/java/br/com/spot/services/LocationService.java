@@ -1,6 +1,8 @@
 package br.com.spot.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.spot.domains.Admin;
@@ -23,14 +25,14 @@ public class LocationService {
 	    
 		System.out.println(qty);
 		
-		return null;
-//		int idx = (int)(Math.random() * qty);
-//	    Page<Question> questionPage = questionRepository.findAll(new PageRequest(idx, 1));
-//	    Question q = null;
-//	    if (questionPage.hasContent()) {
-//	        q = questionPage.getContent().get(0);
-//	    }
-//	    return q;
+		int idx = (int)(Math.random() * qty);
+	    Page<Location> locationPage = locationRepository.findAll(PageRequest.of(idx, 1));
+	    Location location = null;
+	    
+	    if (locationPage.hasContent()) {
+	    	location = locationPage.getContent().get(0);
+	    }
+	    return location;
 	}
 	
 	

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.spot.domains.Address;
@@ -27,9 +26,6 @@ import br.com.spot.services.UserService;
 @RequestMapping(value = "location")
 public class LocationResource {
 	
-//	@Autowired
-//	UserService userService;
-	
 	@Autowired
 	LocationService locationService;
 
@@ -39,16 +35,16 @@ public class LocationResource {
 	@Autowired
 	AdminService adminService;
 	
-	/*
-	* retorna location aleatorio  
-	*/	
 	@GetMapping(value = "/random")
 	public ResponseEntity<?> getRandomLocation(){
-		
-//		locationService.getRandom();
+		try {
+			Location location = locationService.getRandom();
 			
-		System.out.println("Opa");
-		return null;
+			return new ResponseEntity<>(HttpStatus.OK).ok(location);
+			
+		} catch (Exception e) {
+			return ResponseEntity.noContent().build();
+		}
 	}
 	
 	
