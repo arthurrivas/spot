@@ -22,9 +22,7 @@ public class LocationService {
 
 	public Location getRandom() {
 		Long qty = locationRepository.countAll();
-	    
-		System.out.println(qty);
-		
+	    		
 		int idx = (int)(Math.random() * qty);
 	    Page<Location> locationPage = locationRepository.findAll(PageRequest.of(idx, 1));
 	    Location location = null;
