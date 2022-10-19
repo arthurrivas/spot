@@ -17,6 +17,9 @@ public class AdminService {
 	@Autowired
 	BCryptPasswordEncoder pe;
 	
+	public Admin getAdminById(Integer id) {
+		return (Admin) adminRepository.getReferenceById(id);
+	}
 	
 	public void save(Admin admin) {
 		adminRepository.save(admin);

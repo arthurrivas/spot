@@ -37,13 +37,6 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/teste")
-	public ResponseEntity<?> testeAuthorization(){
-		
-		System.out.println("OOOOOOOpa");
-		
-		return new ResponseEntity<>(HttpStatus.OK).ok(null);
-		
-	}
+	
 	
 }

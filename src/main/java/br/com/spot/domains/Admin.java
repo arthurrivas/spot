@@ -6,12 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-import br.com.spot.domains.enums.Profile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.com.spot.domains.enums.Profile;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @PrimaryKeyJoinColumn(name="idAdmin")
 public class Admin extends User {
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "admin")
     private List<Location> createdLocations;
 

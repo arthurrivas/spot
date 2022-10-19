@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.spot.domains.enums.Profile;
 
 @Entity(name = "USERS")
@@ -25,6 +27,8 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	private String email;
+	
+	@JsonIgnore
 	private String password;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
