@@ -20,10 +20,6 @@ import br.com.spot.services.UserService;
 public class UserController {
 
 	@Autowired
-	UserService userService;
-	@Autowired
-	AdminService adminService;
-	@Autowired
 	ClientService clientService;
 	
 	@PostMapping(value = "/client")

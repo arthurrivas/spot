@@ -1,5 +1,7 @@
 package br.com.spot.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +17,10 @@ public class LocationService {
 	
 	@Autowired
 	LocationRepository locationRepository;
+	
+	public Location getLocationById(Integer id) {
+		return locationRepository.getReferenceById(id);
+	}
 	
 	public void save(Location location) {
 		locationRepository.save(location);
@@ -33,10 +39,18 @@ public class LocationService {
 	    return location;
 	}
 	
+	public List<Location> getLocations(){
+		return locationRepository.findAll();
+	}
+	
+	public void deleteById(Integer id) {
+		locationRepository.deleteById(id);
+	}
 	
 	public Location fromLocationNAddressDTO(LocationNAddressDTO locAddDTO, Admin admin) {
 		return new Location(null, locAddDTO.getTitleLocation(),locAddDTO.getDescriptionLocation(), admin);
 	}
+
 
 
 	
