@@ -70,6 +70,11 @@ public class AdminController {
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> updateAdmin(@PathVariable(value = "id") Integer id, @RequestBody CreateUserDTO userDTO){	
 		try {
+			
+			// Valida existencia de admin
+			Admin admin = adminService.getAdminById(id);
+			if(admin == null) return ResponseEntity.badRequest().build();
+			
 			Admin updatedAdmin = adminService.fromCreateUserDTO(userDTO);
 			updatedAdmin.setId(id);
 			
