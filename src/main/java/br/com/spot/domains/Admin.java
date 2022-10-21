@@ -19,7 +19,6 @@ public class Admin extends User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "admin")
     private List<Location> createdLocations;
-
 	
 	public Admin() {
 	}
@@ -40,7 +39,5 @@ public class Admin extends User {
 	public void setCreatedLocations(List<Location> createdLocations) {
 		this.createdLocations = createdLocations;
 	}
-	
-	
 	
 }

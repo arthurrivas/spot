@@ -16,11 +16,11 @@ public class LeaseRegistration {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	
-	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name="id_client")	
 	private Client client;
 	
-	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name="id_location")
 	private Location location;
 	
