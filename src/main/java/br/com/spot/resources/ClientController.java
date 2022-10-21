@@ -15,25 +15,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.spot.domains.Admin;
+import br.com.spot.domains.Client;
 import br.com.spot.domains.dtos.CreateUserDTO;
-import br.com.spot.services.AdminService;
 import br.com.spot.services.ClientService;
-import br.com.spot.services.UserService;
 
 @RestController
-@RequestMapping(value = "admin")
-public class AdminController {
-	
+@RequestMapping(value = "client")
+public class ClientController {
+
 	@Autowired
-	AdminService adminService;
+	ClientService clientService;
 	
 	@GetMapping
-	public ResponseEntity<?> getAdmins(){
+	public ResponseEntity<?> getClients(){
 		try {
 			
-			List<Admin> admins = adminService.findAll();
+			List<Client> clients = clientService.findAll();
 			
-			return new ResponseEntity<>(HttpStatus.OK).ok(admins);
+			return new ResponseEntity<>(HttpStatus.OK).ok(clients);
 			
 		} catch (Exception e) {
 			return ResponseEntity.noContent().build();
@@ -41,12 +40,12 @@ public class AdminController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> getAdminById(@PathVariable(value = "id") Integer id ){
+	public ResponseEntity<?> getClientById(@PathVariable(value = "id") Integer id ){
 		try {
 			
-			Admin admin = adminService.getAdminById(id);
+			Client client = clientService.getClientById(id);
 			
-			return new ResponseEntity<>(HttpStatus.OK).ok(admin);
+			return new ResponseEntity<>(HttpStatus.OK).ok(client);
 			
 		} catch (Exception e) {
 			return ResponseEntity.noContent().build();
@@ -54,13 +53,13 @@ public class AdminController {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<?> createAdmin(@RequestBody CreateUserDTO newUserDTO){
+	public ResponseEntity<?> createClient(@RequestBody CreateUserDTO newUserDTO){
 		try {
 			
-			Admin admin = adminService.fromCreateUserDTO(newUserDTO);
-			adminService.save(admin);
+			Client client = clientService.fromCreateUserDTO(newUserDTO);
+			clientService.save(client);
 			
-			return new ResponseEntity<>(HttpStatus.OK).ok(admin);
+			return new ResponseEntity<>(HttpStatus.OK).ok(client);
 			
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();
@@ -68,15 +67,13 @@ public class AdminController {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<?> updateAdmin(@PathVariable(value = "id") Integer id, @RequestBody CreateUserDTO userDTO){	
+	public ResponseEntity<?> updateClient(@PathVariable(value = "id") Integer id, @RequestBody CreateUserDTO userDTO){	
 		try {
-			Admin updatedAdmin = adminService.fromCreateUserDTO(userDTO);
-			updatedAdmin.setId(id);
+			Client client = clientService.fromCreateUserDTO(userDTO);
+			client.setId(id);
+			clientService.save(client);
 			
-			adminService.save(updatedAdmin);
-			
-			
-			return new ResponseEntity<>(HttpStatus.OK).ok(updatedAdmin);
+			return new ResponseEntity<>(HttpStatus.OK).ok(client);
 			
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();
@@ -87,10 +84,9 @@ public class AdminController {
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> deleteAdminById(@PathVariable(value = "id")Integer id){
-		
 		try {
 			
-			adminService.deleteAdminById(id);
+			clientService.deleteAdminById(id);
 			
 			return ResponseEntity.noContent().build();
 			
@@ -99,7 +95,4 @@ public class AdminController {
 		}
 		
 	}
-	
-	
-	
 }
