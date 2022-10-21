@@ -38,17 +38,6 @@ public class LocationController {
 	@Autowired
 	AdminService adminService;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> getLocationById(@PathVariable(value = "id") Integer id){
 		try {
