@@ -87,4 +87,13 @@ public class Location {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+
+	public List<LeaseRegistration> getLeaseRegistrations() {
+		return leaseRegistrations;
+	}
+
+	public void setLeaseRegistrations(List<LeaseRegistration> leaseRegistrations) {
+		this.leaseRegistrations = leaseRegistrations;
+	}
+	
 }
