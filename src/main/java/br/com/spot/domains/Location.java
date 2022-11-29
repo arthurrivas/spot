@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Location {
 	
@@ -31,6 +35,7 @@ public class Location {
     private Admin admin;
 	
 	@OneToMany(mappedBy = "location")
+	@JsonIgnore
 	private List<LeaseRegistration> leaseRegistrations;
 	
 	public Location(){
