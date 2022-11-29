@@ -129,12 +129,17 @@ public class LocationController {
 			UserSS ss = UserService.authenticated();
 			
 			if ( ss != null && ss.getId() != null ) {
-
+								
 				Admin admin = adminService.getAdminById(ss.getId());
 				
 				Location location = locationService.fromLocationNAddressDTO(laDTO, admin);
 				location.setId(id);
 				Address address = addressService.fromLocationNAddressDTO(laDTO);
+				location.setAddress(address);
+				
+				
+				locationService.save(location);
+				
 				
 				return new ResponseEntity<>(HttpStatus.OK).ok(location);
 				
